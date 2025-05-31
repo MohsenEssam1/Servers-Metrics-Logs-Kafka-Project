@@ -6,8 +6,10 @@ This project simulates a cloud storage environment with 10 servers and a load ba
 ![image](https://github.com/user-attachments/assets/1a8a9321-f6e6-4d24-a0be-34e1fe41f146)
 
 ## project steps
-### 1. Start Kafka Broker
-- Run Kafka using Docker in **KRaft mode** (no Zookeeper).
+
+### 1. Start Kafka Broker & PostgreSQL
+- Run Kafka and PostgreSQL using Docker Compose.
+- Uses `docker-compose.yaml` file with Kafka (KRaft mode) and PostgreSQL images.
 
 ### 2. Create Kafka Topics
 - Create two Kafka topics:
@@ -21,17 +23,14 @@ This project simulates a cloud storage environment with 10 servers and a load ba
 ### 4. Start Python Metrics Consumer
 - **Consumes** from `test-topic4`.
 - **Parses** server metrics data.
-- **Batch inserts** into `server_matric` table in MS SQL Server:
+- **Batch inserts** into `server_matric` table in **PostgreSQL**:
   - Every 2 minutes **or**
   - After 1000 messages.
-- **Dependencies**: `kafka-python`, `pandas`, `sqlalchemy`, `pyodbc`.
 
 ### 5. Start Spark Logs Processor
 - **Consumes** from `test-topic3`.
 - **Parses** HTTP logs (GET/POST success/failure).
 - **Performs** 5-minute moving window aggregation with a 10-minute watermark.
-- **Outputs** result to `output_log_summary.csv`.
-- **Dependencies**: `PySpark`, `findspark`, `pandas`, `os`.
+- **Outputs** result to `HDFS`for storage or further processing.
 
-### 6. Upload Output to HDFS
-- Upload the generated `output_log_summary.csv` file to HDFS for storage or further processing.
+
