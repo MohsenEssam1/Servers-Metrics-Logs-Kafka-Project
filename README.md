@@ -33,4 +33,31 @@ This project simulates a cloud storage environment with 10 servers and a load ba
 - **Performs** 5-minute moving window aggregation with a 10-minute watermark.
 - **Outputs** result to `HDFS`for storage or further processing.
 
+## 🛠️ Technologies Used
+
+- **Apache Kafka**
+  - Used as the message broker in **KRaft mode** (no Zookeeper).
+  - Topics: `test-topic3` (logs), `test-topic4` (metrics).
+
+- **Maven**
+  - Used to compile and run the **Java producer simulator**.
+
+- **Python**
+  - Used for writing **Kafka consumers**:
+    - `kafka-python`: Consuming messages from Kafka.
+    - `sqlalchemy`, `pandas`, `psycopg2`: Parsing and writing to PostgreSQL.
+
+- **Apache Spark Structured Streaming (PySpark)**
+  - Used for real-time **log aggregation and windowed processing**.
+  - Handles 5-minute moving windows with 10-minute watermark.
+
+- **PostgreSQL**
+  - Stores parsed **server metrics** in the `server_matric` table.
+
+- **Hadoop HDFS**
+  - Stores the OUTPUT from Spark.
+
+- **Docker & Docker Compose**
+  - Manages services using a `docker-compose.yaml` file.
+  - Runs containers for **Kafka**, **Kafka CLI** , **HDFS**, and **PostgreSQL**.
 
