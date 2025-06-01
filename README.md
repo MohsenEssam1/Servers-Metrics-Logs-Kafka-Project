@@ -40,7 +40,7 @@ This project simulates a cloud storage environment with 10 servers and a load ba
 
 - **Maven**: Builds and runs the Java producer simulator.
 
-- **Python**: Kafka consumers using `kafka-python`, `sqlalchemy`, `pandas`.
+- **Python**: Kafka consumers using `kafka-python`, `pandas`.
 
 - **Apache Spark (PySpark)**: Real-time log processing with 5-min windows & 10-min watermark.
 
