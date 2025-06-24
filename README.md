@@ -26,12 +26,14 @@ This project simulates a cloud storage environment with 10 servers and a load ba
 - **Batch inserts** into `server_matric` table in **PostgreSQL**:
   - Every 2 minutes **or**
   - After 1000 messages.
+![metrics_table](https://github.com/user-attachments/assets/2f5a5c12-c654-4197-a687-7eac65eb4a49)
 
 ### 5. Start Spark Logs Processor
 - **Consumes** from `test-topic3`.
 - **Parses** HTTP logs (GET/POST success/failure).
 - **Performs** 5-minute moving window aggregation with a 10-minute watermark.
 - **Outputs** result to `HDFS`for storage or further processing.
+![logs](https://github.com/user-attachments/assets/8313e643-2aab-4de3-a3b3-9cd58c983450)
 
 ## 🛠️ Technologies Used
 
